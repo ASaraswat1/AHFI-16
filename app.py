@@ -246,7 +246,7 @@ query_start = st.date_input("Start Date for Query", value=datetime.now() - timed
 
 query_end = st.date_input("End Date for Query", value=datetime.now(), key="query_end_input1")
 
-query_agents = st.multiselect("Select Agents for Query", list(AGENTS.keys()), default=["Portfolio Manager (LangGraph)"], key="query_agents_input")
+query_agents = st.multiselect("Select Agents for Query", list(AGENTS.keys()), default=["Portfolio Manager (LangGraph)"], key="query_agents_input1")
 
 
 
