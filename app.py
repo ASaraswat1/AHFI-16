@@ -165,7 +165,7 @@ if st.button("Run Backtest", key="run_backtest_button"):
 
                 df["Date"] = df.index
                 
-                selected_agent = AGENTS[agent_choices]
+                selected_agent = AGENTS[agent_choicess]
 
                 bt = Backtester(
 
