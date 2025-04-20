@@ -240,7 +240,7 @@ if st.button("Get Strategy Decisions"):
 
 st.markdown("## 📅 Get Trading Decisions by Date or Range")
 
-query_ticker = st.text_input("Ticker for on-demand strategy query", value="RELIANCE.NS", key="query_ticker_input")
+query_ticker = st.text_input("Ticker for on-demand strategy query", value="RELIANCE.NS", key="query_ticker_input1")
 
 query_start = st.date_input("Start Date for Query", value=datetime.now() - timedelta(days=30), key="query_start_input")
 
