@@ -145,42 +145,55 @@ with st.sidebar:
     initial_capital = st.number_input("Initial Capital (INR)", min_value=10000, value=100000)
 
 
-
 if st.button("Run Backtest", key="run_backtest_button"):
 
     with st.spinner("Running strategy..."):
 
-        try:
+        for agent_name in query_agents:
 
-            selected_agent = AGENTS[agent_choices]
+            try:
 
-            bt = Backtester(
+                df = yf.download(query_ticker, start=query_start, end=query_end, progress=False)
 
-                agent=selected_agent,
+                if df.empty:
 
-                tickers=[ticker],
+                    st.warning(f"No data for {query_ticker} in selected range.")
 
-                start_date=start_date.strftime('%Y-%m-%d'),
+                    continue
 
-                end_date=end_date.strftime('%Y-%m-%d'),
+                df = df.rename(columns={"Adj Close": "Close"}) if "Adj Close" in df.columns else df
 
-                initial_capital=initial_capital
+                df["Date"] = df.index
+                
+                selected_agent = AGENTS[agent_choices]
 
-            )
+                bt = Backtester(
 
-            result_df, stats = bt.run()
+                    agent=selected_agent,
 
-            st.subheader("📈 Strategy Performance")
+                    tickers=[ticker],
 
-            st.line_chart(result_df.set_index("Date")["Portfolio Value"])
+                    start_date=start_date.strftime('%Y-%m-%d'),
 
-            st.subheader("📊 Summary Stats")
+                    end_date=end_date.strftime('%Y-%m-%d'),
 
-            st.dataframe(stats)
+                    initial_capital=initial_capital
 
-        except Exception as e:
+                )
 
-            st.error(f"Error: {str(e)}")
+                result_df, stats = bt.run()
+
+                st.subheader("📈 Strategy Performance")
+
+                st.line_chart(result_df.set_index("Date")["Portfolio Value"])
+
+                st.subheader("📊 Summary Stats")
+
+                st.dataframe(stats)
+
+            except Exception as e:
+
+                st.error(f"Error: {str(e)}")
 
 
 
