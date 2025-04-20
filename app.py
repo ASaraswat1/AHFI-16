@@ -242,9 +242,9 @@ st.markdown("## 📅 Get Trading Decisions by Date or Range")
 
 query_ticker = st.text_input("Ticker for on-demand strategy query", value="RELIANCE.NS", key="query_ticker_input1")
 
-query_start = st.date_input("Start Date for Query", value=datetime.now() - timedelta(days=30), key="query_start_input")
+query_start = st.date_input("Start Date for Query", value=datetime.now() - timedelta(days=30), key="query_start_input1")
 
-query_end = st.date_input("End Date for Query", value=datetime.now(), key="query_end_input")
+query_end = st.date_input("End Date for Query", value=datetime.now(), key="query_end_input1")
 
 query_agents = st.multiselect("Select Agents for Query", list(AGENTS.keys()), default=["Portfolio Manager (LangGraph)"], key="query_agents_input")
 
