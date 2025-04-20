@@ -146,7 +146,7 @@ with st.sidebar:
 
 
 
-if st.button("Run Backtest"):
+if st.button("Run Backtest", key="run_backtest_button"):
 
     with st.spinner("Running strategy..."):
 
@@ -196,7 +196,7 @@ query_agents = st.multiselect("Select Agents for Query", list(AGENTS.keys()), de
 
 
 
-if st.button("Get Strategy Decisions"):
+if st.button("Get Strategy Decisions", key="get_strategy_decisions_button"):
 
     with st.spinner("Running strategy queries..."):
 
@@ -250,7 +250,7 @@ query_agents = st.multiselect("Select Agents for Query", list(AGENTS.keys()), de
 
 
 
-if st.button("Get Strategy Decisions"):
+if st.button("Get Strategy Decisions", key="get_strategy_decisions_button1"):
 
     with st.spinner("Running strategy queries..."):
 
